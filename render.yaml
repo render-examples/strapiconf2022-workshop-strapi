@@ -1,8 +1,11 @@
 services:
   - type: web
-    name: strapi
+    name: productivity-tips-api
     env: node
-    plan: starter
+    plan: free
+    # Update the following line with your Strapi GitHub repo
+    repo: https://github.com/render-examples/strapiconf2022-workshop-strapi
+    branch: main
     buildCommand: yarn install && yarn build
     startCommand: yarn start
     healthCheckPath: /_health
@@ -25,9 +28,27 @@ services:
         generateValue: true
       - key: ADMIN_JWT_SECRET
         generateValue: true
+      - key: API_TOKEN_SALT
+        generateValue: true
       - key: APP_KEYS
         generateValue: true
 
+  - type: web
+    name: productivity-tips-web
+    env: node
+    plan: free
+    # Update the following line with your Remix GitHub repo
+    repo: https://github.com/render-examples/strapiconf2022-workshop-remix
+    branch: step-5
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: STRAPI_URL_BASE
+        fromService:
+          type: web
+          name: productivity-tips-api
+          envVarKey: RENDER_EXTERNAL_URL
+
 databases:
   - name: strapi
-    plan: starter
+    plan: free # This database will expire 90 days after creation
