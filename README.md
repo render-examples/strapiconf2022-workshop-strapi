@@ -40,5 +40,6 @@
 10. Then create an API Token: **Settings** --> **API Tokens** --> **Create new API Token**. This will be used by your Remix app to make secure API requests to Strapi.
 11. In the Render Dashboard, click on your Remix service. It may still be deploying, but that's ok. Then in **Environment**, click **Add Environment Variable**.
 12. Set the **Key** as `STRAPI_API_TOKEN` and paste in the Strapi API token you generated as the **Value**.
-13. Click **Save Changes**, and your Remix app will redeploy using this new value.
-14. While the Remix redeploy is happening, go back to your production Strapi Admin GUI (at `/admin` of your Strapi service `.onredner.com` URL) and add some productivity tips so that there is some data for the Remix app to display.
+13. Click **Save Changes**.
+14. Use the **Manual Deploy** button to re-deploy the latest commit.
+14. While the Remix redeploy is happening, go back to your production Strapi Admin GUI (at `/admin` of your Strapi service `.onrender.com` URL) and add some productivity tips so that there is some data for the Remix app to display.
